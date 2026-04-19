@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk kak nana </title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffe3ec, #d0c7ff);
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 50px;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 800px;
+      width: 90%;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 25px;
+      color: #d63384;
+    }
+    p {
+      font-size: 1.4em;
+      line-height: 1.8em;
+      margin-bottom: 35px;
+    }
+    button {
+      background: #ff4b91;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #d63384;
+    }
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4b91;
+      transform: rotate(45deg);
+      animation: float 8s infinite ease-in;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4b91;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    .bouquet {
+      margin-top: 20px;
+      font-size: 2em;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Untuk Kak Nana Gemass 💖</h1>
+    <p id="quote">Kakk enak ya jadi kamu.</p>
+    <button onclick="nextLoveNote()"> pencet ini kakk >< 💌</button>
+    <div class="bouquet">💐</div>
+  </div>
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    const loveQuotes = [
+      "Udah abis kak, kalo bahas tentang kamu sampe kapanpun gaakan cukup soalnya, btw bales pake codingan juga boleh lahh ><",
+      "Enak kalo mau liat bidadari tinggal liat kaca",
+      "Kamu tau ngga bedanya kamu sama bensin",
+      "Kalo bensin lama lama makin habis kalo kamu lama lama makin manis",
+      "Kalo cantik ada wujudnya misalnya kaya air",
+      "Mungkin dunia ini udah tenggelam karena kecantikanmu",
+      "Kurma adalah buah manis yang disukai Rasulullah",
+      "Kalo kamu perempuan termanis yang aku sukai karena Allah",
+      "Kak kamu itu ibarat selatan",
+      "Soalnya kamu hal terindah yang gabisa aku utarakan"
+    ];
+
+    let index = 0;
+    function nextLoveNote() {
+      index = (index + 1) % loveQuotes.length;
+      document.getElementById("quote").textContent = loveQuotes[index];
+    }
+
+    // Generate floating hearts
+    const heartsContainer = document.getElementById("hearts");
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+      heartsContainer.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
